@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <mapping-file>../src/main/java/com/miyu/springboot/entity/entityXml/AcctTellEntity.xml</mapping-file>
+        <mapping-file>com/miyu/springboot/entity/UserTableEntity.xml</mapping-file>
+        <class>com.miyu.springboot.entity.AcctTellEntity</class>
+        <class>com.miyu.springboot.entity.UserTableEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:sqlserver://127.0.0.1:1433;database=demo"/>
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        </properties>
+    </persistence-unit>
+</persistence>

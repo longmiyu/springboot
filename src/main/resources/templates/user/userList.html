@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script th:inline="javascript">
+    var message = [[${users}]];
+</script>
+<body>
+<table border="1">
+    <tr>
+        <th>姓名</th>
+        <th>编码</th>
+        <th>邮箱</th>
+        <th>手机</th>
+        <th>密码</th>
+    </tr>
+    <tr th:each="entries,stat:${users}">
+        <td th:text="${entries['user_name']}"></td>
+        <td th:text="${entries['user_code']}"></td>
+        <td th:text="${entries['user_email']}"></td>
+        <td th:text="${entries['user_phone']}"></td>
+        <td th:text="${entries['user_password']}"></td>
+    </tr>
+
+</table>
+</body>
+</html>

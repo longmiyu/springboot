@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.miyu.springboot.entity.UserTableEntity">
+        <table name="user_table" schema="dbo" catalog="demo"/>
+        <attributes>
+            <id name="userId">
+                <column name="user_id" precision="-1"/>
+            </id>
+            <basic name="userCode">
+                <column name="user_code" length="50"/>
+            </basic>
+            <basic name="userName">
+                <column name="user_name" length="50"/>
+            </basic>
+            <basic name="userPassword">
+                <column name="user_password" length="50"/>
+            </basic>
+            <basic name="userEmail">
+                <column name="user_email" length="50"/>
+            </basic>
+            <basic name="userPhone">
+                <column name="user_phone" length="11"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
