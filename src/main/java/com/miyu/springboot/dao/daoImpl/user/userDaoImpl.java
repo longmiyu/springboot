@@ -39,7 +39,7 @@ public class userDaoImpl extends commonDAO implements userDao  {
         String user_phone="12356478";
         StringBuffer inserSql = new StringBuffer();
         inserSql.append("insert into user_table (user_code, user_name, user_password, user_email,  user_phone )");
-        inserSql.append(" values (");
+        inserSql.append(" values (  ");
         inserSql.append("'").append(user_code).append("',");
         inserSql.append("'").append(user_name).append("',");
         inserSql.append("'").append(user_password).append("',");
