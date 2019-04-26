@@ -1,11 +1,15 @@
 package com.miyu.springboot.controller.user;
 
+
 import com.miyu.springboot.entity.UserTableEntity;
 import com.miyu.springboot.service.user.userService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,5 +55,15 @@ public class userController {
 
         return null;
 
+    }
+
+    @RequestMapping("/test")
+    @ResponseBody
+    public JSONObject test(@RequestBody String str) {
+        JSONObject jo = JSONObject.fromObject(str);
+        JSONObject test = new JSONObject();
+        System.out.println(str+"aaaaaaaaaaaaaaaaaabbb");
+        test.put("name","张三");
+        return test;
     }
 }
