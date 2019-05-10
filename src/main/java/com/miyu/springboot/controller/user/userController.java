@@ -25,10 +25,21 @@ public class userController {
 
     @RequestMapping("/index")
     public String userIndex(Model model){
+
+
+        int a,b,c;
+        for(int i=101;i<1000;i++) {
+            a=i%10;
+            b=i/10%10;
+            c=i/100;
+            if(a*a*a+b*b*b+c*c*c==i)
+                System.out.println(i);
+        }
+
         System.out.println("aaaaaaaaaaaaaa");
         ModelAndView mav = new ModelAndView();
         List<Map<String,Object>> str = us.userService();
-        model.addAttribute("users",str);
+        model.addAttribute("users", str);
         return "user/userList";
     }
 
@@ -64,6 +75,8 @@ public class userController {
         JSONObject test = new JSONObject();
         System.out.println(str+"aaaaaaaaaaaaaaaaaabbb");
         test.put("name","张三");
+
+
         return test;
     }
 }
