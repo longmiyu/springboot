@@ -5,9 +5,22 @@
     <title>首页</title>
     <script src="/js/jquery/jquery-3.4.0.min.js"></script>
     <script src="/js/common.js"></script>
+    <script src="/layui/layui.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css">
 
     <script th:inline="javascript" type="text/javascript">
-    function test() {
+
+        layui.use('form', function(){
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+
+            //……
+
+            //但是，如果你的HTML是动态生成的，自动渲染就会失效
+            //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+            form.render();
+        });
+
+        function test() {
         var params = {
             "id":"123",
             "name":"ceshi"
@@ -19,6 +32,35 @@
     </script>
 </head>
 <body>
+<form class="layui-form" action="" >
+    <div class="layui-form-item">
+        <label class="layui-form-label">单行输入框</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">单行选择框</label>
+        <div class="layui-input-block">
+            <select name="interest" lay-filter="aihao">
+                <option value=""></option>
+                <option value="0">写作</option>
+                <option value="1" selected="">阅读</option>
+                <option value="2">游戏</option>
+                <option value="3">音乐</option>
+                <option value="4">旅行</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">复选框</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="like[write]" title="写作">
+            <input type="checkbox" name="like[read]" title="阅读" checked="">
+            <input type="checkbox" name="like[game]" title="游戏">
+        </div>
+    </div>
+</form>
 <table border="1">
     <tr>
         <td colspan="3">
