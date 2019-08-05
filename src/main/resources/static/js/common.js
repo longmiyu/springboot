@@ -1,5 +1,3 @@
-//<script src="/js/jquery/jquery-3.4.0.min.js"></script>
-
 function sendDate (url,data,async,type,dateType) {
     async = (async==null || async=="" || typeof(async)=="undefined")? "true" : async;
     type = (type==null || type=="" || typeof(type)=="undefined")? "post" : type;
@@ -23,6 +21,47 @@ function ajax(url, data,async,type,dateType) {
         }
     });
     return rs;
+}
+
+
+function openDialog(url,data) {
+    debugger;
+    layer.open({
+        type: 2,
+        title: '弹出框',
+        shadeClose: true,
+        shade: false,
+        maxmin: false, //开启最大化最小化按钮
+        area: ['893px', '600px'],
+       content:'openDialog?url='+url+''
+      //  content: window.location.href = 'openDialog'
+    });
+}
+
+
+function Dialog(url,data) {
+    data.url=url;
+    data = JSON.stringify(data);
+
+    $.ajax({
+        type:'post',
+        url:'openDialog',
+        data:data,
+        async:false,
+        contentType: "application/json; charset=utf-8",
+        success:function (data) {
+
+            debugger;
+            window.location.href=data;
+            var s =data  ;
+                alert(s)
+        },
+        error:function (data) {
+            alert('页面错误')
+
+        }
+
+    })
 }
 
 
