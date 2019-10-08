@@ -1,5 +1,6 @@
 package com.miyu.springboot.service.serviceImpl.user;
 
+import com.miyu.springboot.common.commonData.RedisUtils;
 import com.miyu.springboot.dao.user.userDao;
 import com.miyu.springboot.entity.UserTableEntity;
 import com.miyu.springboot.service.user.userService;
@@ -12,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +23,9 @@ import java.util.Map;
 public class userServiceImpl  implements userService {
     @Autowired
     private userDao ud;
+    @Autowired
+   private RedisUtils redisUtils;
+
     @Override
     public List<Map<String,Object>> userService() {
         List<Map<String,Object>> str = ud.userDao();
@@ -47,8 +53,33 @@ public class userServiceImpl  implements userService {
 
     @Override
     public  List<UserTableEntity> query() {
-
         List<UserTableEntity> use= ud.query();
+
+
+        StringBuffer value = new StringBuffer();
+      // JSONArray v = new JSONArray();
+
+         List<Map<String,Object>> v = new ArrayList<>();
+        for (int i=0;i<10;i++) {
+            value.append("测试数据" + i);
+            Map<String, Object> m = new HashMap<>();
+            m.put(String.valueOf(i), "测试数据量");
+            v.add(m);
+        }
+        Map<String,Object> m = new HashMap<>();
+        m.put("ceshi","缓降");
+        m.put("c","ceshiMap");
+        Long a = System.currentTimeMillis();
+        redisUtils.SetList("redisKey",use);
+        redisUtils.SetList("listMap",v);
+        redisUtils.SetMap("map",m);
+         List<UserTableEntity> s= ( List<UserTableEntity>)redisUtils.getList("redisKey");
+        List<Map<String,Object>> s1 = ( List<Map<String,Object>>)redisUtils.getList("listMap");
+        Map<String,Object>s2 = (Map<String,Object>)redisUtils.getMap("map");
+        System.out.println("listEntity>>>>>>>>>>"+s);
+        System.out.println("listMap>>>>>>>>>>>>>>"+s1);
+        System.out.println("map>>>>>>>>>>>>>>"+s2);
+        System.out.println("缓存所用时间："+(System.currentTimeMillis()-a));
 
         return use;
     }

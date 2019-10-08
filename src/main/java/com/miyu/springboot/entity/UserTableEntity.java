@@ -1,11 +1,12 @@
 package com.miyu.springboot.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "user_table", schema = "dbo", catalog = "demo")
-public class UserTableEntity {
+public class UserTableEntity implements Serializable {
     private Integer userId;
     private String userCode;
     private String userName;

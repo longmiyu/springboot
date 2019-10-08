@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static javafx.scene.input.KeyCode.T;
-
 @Repository
 public class userDaoImpl extends commonDAO implements userDao  {
     @Override
@@ -21,7 +19,7 @@ public class userDaoImpl extends commonDAO implements userDao  {
         user.setUserPassword("123456");
         user.setUserEmail("");
         user.setUserPhone("12345678940");
-        String strs = "select *from user_table ";
+        String strs = "select * from user_table ";
         List<Map<String,Object>> userTable =  this.querySqlByList(strs);
         System.out.println(userTable);
         return userTable;

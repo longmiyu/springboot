@@ -1,6 +1,7 @@
 package com.miyu.springboot.controller.user;
 
 
+import com.miyu.springboot.common.commonData.RedisUtils;
 import com.miyu.springboot.entity.UserTableEntity;
 import com.miyu.springboot.service.user.userService;
 import net.sf.json.JSONObject;
@@ -21,7 +22,7 @@ public class userController {
 
     @Autowired
     private  userService us;
-
+    private RedisUtils reu;
     @RequestMapping("/index")
     public String userIndex(Model model){
 
@@ -35,11 +36,15 @@ public class userController {
                 System.out.println(i);
         }
 */
+
         System.out.println("aaaaa3vvddcc");
         System.out.println("aaaaaaaaaaaaaa");
+
         ModelAndView mav = new ModelAndView();
+        List<UserTableEntity> s = us.query();
         List<Map<String,Object>> str = us.userService();
         model.addAttribute("users", str);
+
         return "user/userList";
     }
 
