@@ -21,10 +21,11 @@ import java.util.Map;
 public class userController {
 
     @Autowired
-    private  userService us;
+    private userService us;
     private RedisUtils reu;
+
     @RequestMapping("/index")
-    public String userIndex(Model model){
+    public String userIndex(Model model) {
 
 /*
         int a,b,c;
@@ -42,21 +43,22 @@ public class userController {
 
         ModelAndView mav = new ModelAndView();
         List<UserTableEntity> s = us.query();
-        List<Map<String,Object>> str = us.userService();
+        List<Map<String, Object>> str = us.userService();
         model.addAttribute("users", str);
+        System.out.println(3);
 
         return "user/userList";
     }
 
     @RequestMapping("/insert")
-    public String userInsert(){
+    public String userInsert() {
         us.userInsert();
 
         return "保存成功";
     }
 
     @RequestMapping("/save")
-    public String saveUser(){
+    public String saveUser() {
         us.saveUser();
 
         return "保存成功";
@@ -64,10 +66,10 @@ public class userController {
 
 
     @RequestMapping("/query")
-    public String queryList(){
+    public String queryList() {
 
         //查询返回实体对象
-        List<UserTableEntity> use = us.query() ;
+        List<UserTableEntity> use = us.query();
 
         return null;
 
@@ -76,30 +78,30 @@ public class userController {
     @RequestMapping("/test")
     @ResponseBody
     public JSONObject test(@RequestBody String str) {
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+str);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + str);
         JSONObject jo = JSONObject.fromObject(str);
         JSONObject test = new JSONObject();
-        System.out.println(str+"aaaaaaaaaaaaaaaaaabbb");
-        test.put("name","张三");
+        System.out.println(str + "aaaaaaaaaaaaaaaaaabbb");
+        test.put("name", "张三");
         return test;
     }
+
     @RequestMapping("/url")
-    public ModelAndView  urlContion () throws Exception {
-        JSONObject jo =  us.urlContion();
+    public ModelAndView urlContion() throws Exception {
+        JSONObject jo = us.urlContion();
         ModelAndView mav = new ModelAndView();
         JSONObject s = JSONObject.fromObject(jo);
         JSONObject test = new JSONObject();
-        test.put("name","张三");
-        test.put("sex","男");
-        mav.addObject("cs",test   );
+        test.put("name", "张三");
+        test.put("sex", "男");
+        mav.addObject("cs", test);
         mav.setViewName("user/weather");
         return mav;
     }
 
     @RequestMapping("/openDialog")
-    public String openDialog(String url)
-    {
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>"+url);
+    public String openDialog(String url) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>" + url);
 /*       JSONObject jo = JSONObject.fromObject(data);
        String url = jo.getString("url");
         jo.remove("url");

@@ -15,7 +15,6 @@ public class QrCodeTest {
         String str = QRCodeUtil.decode(destPath);
         // 打印出解析出的内容
         System.out.println(str);
-
     }
 
 }

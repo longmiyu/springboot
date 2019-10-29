@@ -20,9 +20,9 @@ public class QRCodeUtil {
     // 二维码尺寸
     private static final int QRCODE_SIZE = 300;
     // LOGO宽度
-    private static final int WIDTH = 60;
+    private static final int WIDTH = 600;
     // LOGO高度
-    private static final int HEIGHT = 60;
+    private static final int HEIGHT = 600;
 
     private static BufferedImage createImage(String content, String imgPath, boolean needCompress) throws Exception {
         Hashtable hints = new Hashtable();
