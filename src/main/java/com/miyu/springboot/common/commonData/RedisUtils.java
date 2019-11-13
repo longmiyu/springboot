@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class RedisUtils {
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
+
     private  final static  String host = resourceBundle.getString("spring.redis.host");
     private  final static  int port = Integer.valueOf(resourceBundle.getString("spring.redis.port"));
     private  final static  String password = resourceBundle.getString("spring.redis.password");

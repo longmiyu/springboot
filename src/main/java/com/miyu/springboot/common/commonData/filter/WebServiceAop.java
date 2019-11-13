@@ -14,14 +14,11 @@ import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
 import java.util.Map;
 
-@Component
 @Aspect
-public class WebControllerAop {
-
-    @Pointcut("execution(* com.miyu.springboot.controller..*.*(..))")
+@Component
+public class WebServiceAop {
+    @Pointcut("execution(* com.miyu.springboot.service..*.*(..))")
     public void executeService(){}
-
-
 
     /**
 
@@ -35,7 +32,7 @@ public class WebControllerAop {
 
     public void doBeforeAdvice(JoinPoint joinPoint){
 
-        System.out.println("controller我是前置通知!!!");
+        System.out.println("我是前置通知!!!");
 
         //获取目标方法的参数信息
 
@@ -94,7 +91,7 @@ public class WebControllerAop {
 
         if(obj.length > 0) {
 
-            System.out.println("controller请求的参数信息为："+str);
+            System.out.println("请求的参数信息为："+str);
 
         }
 
@@ -120,25 +117,25 @@ public class WebControllerAop {
 
      */
 
-    @AfterReturning(value = "execution(* com.miyu.springboot.controller..*.*(..))",returning = "keys")
+    @AfterReturning(value = "execution(* com.miyu.springboot.service..*.*(..))",returning = "keys")
 
     public void doAfterReturningAdvice1(JoinPoint joinPoint,Object keys){
 
 
 
-        System.out.println("controller第一个后置返回通知的返回值："+keys);
+        System.out.println("第一个后置返回通知的返回值："+keys);
 
     }
 
 
 
-    @AfterReturning(value = "execution(* com.miyu.springboot.controller..*.*(..))",returning = "keys",argNames = "keys")
+    @AfterReturning(value = "execution(* com.miyu.springboot.service..*.*(..))",returning = "keys",argNames = "keys")
 
     public void doAfterReturningAdvice2(String keys){
 
 
 
-        System.out.println("controller第二个后置返回通知的返回值："+keys);
+        System.out.println("第二个后置返回通知的返回值："+keys);
 
     }
 
@@ -170,7 +167,7 @@ public class WebControllerAop {
 
         if(exception instanceof NullPointerException){
 
-            System.out.println("controller发生了空指针异常!!!!!");
+            System.out.println("发生了空指针异常!!!!!");
 
         }
 
@@ -192,7 +189,7 @@ public class WebControllerAop {
 
 
 
-        System.out.println("controller后置通知执行了!!!!");
+        System.out.println("后置通知执行了!!!!");
 
     }
 
@@ -212,7 +209,7 @@ public class WebControllerAop {
 
     public Object doAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){
 
-        System.out.println("controller环绕通知的目标方法名："+proceedingJoinPoint.getSignature().getName());
+        System.out.println("环绕通知的目标方法名："+proceedingJoinPoint.getSignature().getName());
 
         try {//obj之前可以写目标方法执行前的逻辑
 

@@ -8,9 +8,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -26,17 +24,6 @@ public class userController {
 
     @RequestMapping("/index")
     public String userIndex(Model model) {
-
-/*
-        int a,b,c;
-        for(int i=101;i<1000;i++) {
-            a=i%10;
-            b=i/10%10;
-            c=i/100;
-            if(a*a*a+b*b*b+c*c*c==i)
-                System.out.println(i);
-        }
-*/
 
         System.out.println("aaaaa3vvddcc");
         System.out.println("aaaaaaaaaaaaaa");
@@ -75,7 +62,7 @@ public class userController {
 
     }
 
-    @RequestMapping("/test")
+/*    @RequestMapping("/test")
     @ResponseBody
     public JSONObject test(@RequestBody String str) {
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + str);
@@ -84,7 +71,7 @@ public class userController {
         System.out.println(str + "aaaaaaaaaaaaaaaaaabbb");
         test.put("name", "张三");
         return test;
-    }
+    }*/
 
     @RequestMapping("/url")
     public ModelAndView urlContion() throws Exception {
@@ -110,5 +97,15 @@ public class userController {
         mav.addObject(jo);
         mav.setViewName(url);*/
         return url;
+    }
+    @RequestMapping("/test")
+    public  ModelAndView test(){
+        JSONObject jo = new JSONObject();
+
+        List<Map<String, Object>> str = us.userService();
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("user/test");
+       mav.addObject("data",str);
+        return mav;
     }
 }

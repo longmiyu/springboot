@@ -1,7 +1,7 @@
 package com.miyu.springboot.controller.user;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class gz {
@@ -41,7 +41,7 @@ public class gz {
             System.out.println("code>>>>>>>"+c);
 
             }
-
+        Collections.sort(s);
 
 
         return s ;
